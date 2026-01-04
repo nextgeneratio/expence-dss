@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+expense_dss.db
+.DS_Store
