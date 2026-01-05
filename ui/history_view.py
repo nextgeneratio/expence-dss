@@ -64,7 +64,9 @@ def show_history():
             with col1:
                 # Monthly totals chart
                 fig = create_monthly_totals_chart(monthly_totals)
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(
+                    fig, use_container_width=True, key="monthly_totals_chart"
+                )
 
             with col2:
                 # Stats
@@ -101,7 +103,7 @@ def show_history():
 
             with col1:
                 fig = create_seasonal_chart(seasonal_data)
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, use_container_width=True, key="seasonal_chart")
 
             with col2:
                 st.info("**Seasonal Spending**")
@@ -152,7 +154,9 @@ def show_history():
             # Category comparison chart
             if category_totals:
                 fig = create_category_comparison_chart(category_totals)
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(
+                    fig, use_container_width=True, key="category_comparison_chart"
+                )
 
         with col2:
             # Category stats
@@ -177,7 +181,7 @@ def show_history():
 
         if category_monthly:
             fig = create_category_heatmap(category_monthly)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, use_container_width=True, key="category_heatmap")
 
             # Category breakdown table
             st.markdown("---")
@@ -252,18 +256,18 @@ def show_history():
 
         with col1:
             fig = create_month_over_month_chart(comparison)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, use_container_width=True, key="month_over_month_chart")
 
         with col2:
             fig = create_waterfall_comparison(comparison)
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, use_container_width=True, key="waterfall_comparison")
 
         # Category comparison
         st.markdown("---")
         st.subheader("🏷️ Category Changes")
 
         fig = create_category_month_comparison_chart(comparison)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True, key="category_month_comparison")
 
         # Detailed category comparison table
         st.markdown("---")
@@ -335,7 +339,9 @@ def show_history():
 
                 with col1:
                     fig = create_yearly_comparison_chart(yearly_data)
-                    st.plotly_chart(fig, use_container_width=True)
+                    st.plotly_chart(
+                        fig, use_container_width=True, key="yearly_comparison_chart"
+                    )
 
                 with col2:
                     # Category comparison
@@ -361,7 +367,9 @@ def show_history():
                         title=f"Category Comparison: {year1} vs {year2}",
                     )
                     fig.update_layout(template="plotly_white", height=400)
-                    st.plotly_chart(fig, use_container_width=True)
+                    st.plotly_chart(
+                        fig, use_container_width=True, key="yearly_category_comparison"
+                    )
             else:
                 st.warning("Please select different years for comparison.")
         else:
@@ -395,7 +403,7 @@ def show_history():
 
         # Velocity chart
         fig = create_multi_metric_chart(velocity)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, use_container_width=True, key="velocity_chart")
 
         # Category trends
         st.markdown("---")
@@ -412,7 +420,9 @@ def show_history():
 
             if trend:
                 fig = create_spending_trend_chart(trend, selected_category)
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(
+                    fig, use_container_width=True, key="category_trend_chart"
+                )
             else:
                 st.info(f"No trend data available for {selected_category}")
 
@@ -445,7 +455,7 @@ def show_history():
 
                 # Chart
                 fig = create_category_comparison_chart(category_year_totals)
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, use_container_width=True, key="year_summary_chart")
 
                 # Table
                 df = pd.DataFrame(
@@ -493,7 +503,7 @@ def show_history():
                     selected_month
                 )
                 fig = create_expense_type_chart(type_dist)
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig, use_container_width=True, key="expense_type_chart")
 
                 # Category breakdown
                 category_totals = {}
@@ -503,7 +513,9 @@ def show_history():
                     )
 
                 fig = create_category_comparison_chart(category_totals)
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(
+                    fig, use_container_width=True, key="monthly_category_chart"
+                )
 
                 # Detailed table
                 df = pd.DataFrame(
@@ -539,7 +551,9 @@ def show_history():
                 if selected_category in category_monthly:
                     trend = category_monthly[selected_category]
                     fig = create_spending_trend_chart(trend, selected_category)
-                    st.plotly_chart(fig, use_container_width=True)
+                    st.plotly_chart(
+                        fig, use_container_width=True, key="category_summary_trend"
+                    )
 
                 # Monthly breakdown table
                 if selected_category in category_monthly:
